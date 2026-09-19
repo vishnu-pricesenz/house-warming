@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housewarming Invitation</title>
+  <meta name="description"
+    content="ഞങ്ങളുടെ പുതിയ ഭവനത്തിലേക്ക് ഏവർക്കും സ്നേഹപൂർവ്വം സ്വാഗതം! 27-09-2026 രാവിലെ 11 മണി മുതൽ.">
+  <meta property="og:title" content="Housewarming Invitation">
+  <meta property="og:description"
+    content="27-09-2026 രാവിലെ 11 മണി മുതൽ. ഞങ്ങളോടൊപ്പം ഈ സന്തോഷം പങ്കിടാൻ ഏവരെയും ക്ഷണിക്കുന്നു!">
+  <meta property="og:image" content="assets/hero.jpg">
+
+  <!-- Google Fonts: Gayathri & Manjari for Malayalam, Outfit & Playfair Display for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&family=Manjari:wght@400;700&family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap"
+    rel="stylesheet">
+
+  <!-- Canvas Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Ambient Gold Dust Canvas Background -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <div class="page-wrapper">
+    <!-- Top Floating Sound & Theme Control -->
+    <header class="top-nav">
+      <div class="auspicious-badge">
+        <span class="badge-text">ലോകാഃ സമസ്താഃ സുഖിനോ ഭവന്തു</span>
+      </div>
+      <button id="sound-toggle-btn" class="sound-pill-btn" aria-label="Toggle Festive Ambient Melody"
+        title="Music: Play / Pause">
+        <span class="sound-icon">🎵</span>
+      </button>
+      <audio id="bgm-audio" src="assets/backgroundmusic.mp3" loop preload="auto"></audio>
+    </header>
+
+    <!-- Main Container Card -->
+    <main class="invitation-card">
+      <!-- Decorative Traditional Top Border -->
+      <div class="kasavu-border"></div>
+
+      <!-- Minimalist Housewarming Illustration Banner -->
+      <div class="mini-hero-banner">
+        <div class="mini-hero-bg"></div>
+
+        <!-- Decorative floral corners -->
+        <div class="floral-corner floral-tl">❋</div>
+        <div class="floral-corner floral-tr">❋</div>
+        <div class="floral-corner floral-bl">❋</div>
+        <div class="floral-corner floral-br">❋</div>
+
+        <!-- Family Photo -->
+        <div class="family-image-wrapper">
+          <img src="assets/family.png" alt="Family" class="family-hero-image">
+        </div>
+
+        <!-- Rangoli dots row -->
+        <div class="rangoli-row">
+          <span class="rdot"></span><span class="rdot lg"></span><span class="rdot"></span><span
+            class="rdot lg"></span><span class="rdot"></span><span class="rdot lg"></span><span
+            class="rdot"></span><span class="rdot lg"></span><span class="rdot"></span>
+        </div>
+      </div>
+
+
+      <section class="invitation-header">
+        <span class="sub-greeting">സ്നേഹത്തോടെ സ്വാഗതം</span>
+        <h1 class="main-title">
+          <span class="ml-title">ഗൃഹപ്രവേശം</span>
+          <span class="en-subtitle">HOUSEWARMING INVITATION</span>
+        </h1>
+        <div class="title-divider">
+          <span class="divider-line"></span>
+          <span class="divider-gem">✨</span>
+          <span class="divider-line"></span>
+        </div>
+        <p class="warm-message">
+          <span>ഞങ്ങളുടെ സ്വപ്നഭവനത്തിലേക്ക് താങ്കളെ ഹൃദയപൂർവ്വം സ്വാഗതം
+            ചെയ്യുന്നു.</span>
+        </p>
+      </section>
+
+      <!-- Date & Time Showcase Box -->
+      <section class="event-showcase-box">
+        <div class="event-datetime-pill">
+          <div class="event-icon-circle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="event-datetime-text">
+            <span class="date-highlight">27 - 09 - 2026</span>
+            <span class="date-highlight">Sunday</span>
+          </div>
+        </div>
+
+        <div class="time-callout">
+          <span class="time-clock-icon">⏰</span>
+          <span class="time-primary">രാവിലെ 11 AM മുതൽ</span>
+        </div>
+
+        <!-- Live Countdown -->
+        <div class="countdown-wrapper">
+          <h2 class="countdown-title">Time Aayi...</h2>
+          <div class="countdown-grid" id="countdown-timer">
+            <div class="time-box">
+              <span class="time-num" id="cd-days">--</span>
+              <span class="time-unit">Days</span>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-box">
+              <span class="time-num" id="cd-hours">--</span>
+              <span class="time-unit">Hours</span>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-box">
+              <span class="time-num" id="cd-mins">--</span>
+              <span class="time-unit">Mins</span>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-box">
+              <span class="time-num" id="cd-secs">--</span>
+              <span class="time-unit">Secs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Interactive RSVP Call to Action -->
+      <section class="rsvp-action-section">
+        <div class="rsvp-header-box">
+          <h2 class="rsvp-title">താങ്കൾ ഞങ്ങളോടൊപ്പം ഉണ്ടാകില്ലേ?</h2>
+        </div>
+
+        <div class="buttons-container">
+          <!-- Button 1: വന്നിരിക്കും -->
+          <button id="btn-will-come" class="rsvp-btn btn-accept" type="button">
+            <div class="btn-shine"></div>
+            <span class="btn-icon">🎉</span>
+            <span class="btn-text">
+              <strong class="ml-btn-text">വന്നിരിക്കും</strong>
+              <small class="en-btn-sub">Count Me In!</small>
+            </span>
+            <span class="btn-sparkle-tail">✨</span>
+          </button>
+
+          <!-- Button 2: വരാൻ സാധിക്കില്ല -->
+          <button id="btn-cannot-come" class="rsvp-btn btn-decline" type="button">
+            <span class="btn-icon">🏃‍♂️</span>
+            <span class="btn-text">
+              <strong class="ml-btn-text">വരാൻ സാധിക്കില്ല</strong>
+              <small class="en-btn-sub">Cannot Attend</small>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Venue & Location Details -->
+      <section class="location-section">
+        <div class="location-card">
+          <div class="loc-pin">📍</div>
+          <div class="loc-details">
+            <h3 class="venue-name">"നവോദയം"</h3>
+            <p class="venue-address">Near to Thrangali Vayanasala, Thrangali, Palakkad</p>
+            <div class="loc-actions">
+              <a href="https://maps.app.goo.gl/kHJzTRuwn5Jd7pJ28" target="_blank" rel="noopener noreferrer"
+                class="btn-link">
+                <span>ഗൂഗിൾ മാപ്പ് കാണുക (Open Maps)</span> ↗
+              </a>
+              <button id="add-calendar-btn" class="btn-link-sec" type="button">
+                <span>കലണ്ടറിൽ സേവ് ചെയ്യുക 📅</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Note -->
+      <footer class="card-footer">
+        <p class="blessing-quote">“നിങ്ങളുടെ സാന്നിധ്യവും അനുഗ്രഹങ്ങളുമാണ് ഞങ്ങളുടെ ഏറ്റവും വലിയ സന്തോഷം”</p>
+        <p class="family-sign">സ്നേഹത്തോടെ,<br><strong>മുരളീധരൻ , മഞ്ജുളാദേവി & വിഷ്ണു</strong></p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- POPUP 1: SUCCESS MODAL ("സെറ്റ് Lets celebrate togethor") -->
+  <div id="modal-success" class="custom-modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-box modal-success-box">
+      <button class="modal-close-btn" id="success-close-btn" aria-label="Close modal">×</button>
+
+      <div class="modal-badge-wrapper">
+        <img src="assets/pranchiyettan.jpeg" alt="Celebration" class="success-reaction-image">
+      </div>
+
+      <div class="modal-content">
+        <div class="sparkle-chip">SUPER EXCITED!</div>
+        <h2 class="modal-headline success-text">നന്ദിയുണ്ടേയ് !</h2>
+        <h3 class="modal-subheadline">Lets celebrate togethor</h3>
+
+        <p class="modal-desc">
+          നിങ്ങൾ വരുന്നുണ്ടെന്നറിഞ്ഞതിൽ അതിയായ സന്തോഷം! 🎉<br>
+          നമ്മൾ അടിച്ചുപൊളിക്കും!
+        </p>
+
+        <div class="modal-info-pill">
+          <span>🗓️ 27-09-2026</span>
+          <span class="pill-dot">•</span>
+          <span>⏰ 11:00 AM Onwards</span>
+        </div>
+
+        <div class="modal-actions-grid">
+          <button id="share-whatsapp-btn" class="modal-btn btn-whatsapp">
+            <span>വാട്ട്‌സ്ആപ്പിൽ ഷെയർ ചെയ്യാം</span> 💬
+          </button>
+          <button id="modal-calendar-btn" class="modal-btn btn-cal">
+            <span>കലണ്ടർ റിമൈൻഡർ</span> 🔔
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP 2: LOCKED OUT MODAL ("നിങ്ങൾക്ക് വരാധിരിക്കാൻ അനുവാദല്ല്യ") -->
+  <div id="modal-lock" class="custom-modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-box modal-lock-box">
+      <button class="modal-close-btn" id="lock-close-btn" aria-label="Close modal">×</button>
+
+      <div class="lock-visual-wrapper">
+        <div class="lock-pulse-circle"></div>
+        <div class="lock-icon-container" id="animated-lock">
+          <img src="assets/nopermit2.jpeg" alt="No Permit" class="lock-reaction-image">
+        </div>
+        <div class="warning-badge">ACCESS DENIED 🛑</div>
+      </div>
+
+      <div class="modal-content">
+        <h2 class="modal-lock-headline">
+          “നിങ്ങൾക്ക് വരാതിരിക്കാൻ അനുവാദല്ല്യ!”
+        </h2>
+
+        <p class="modal-lock-sub">
+          നോ ചാൻസ്! 🙅‍♂️ നോ പറയാൻ ഇവിടെ വകുപ്പില്ല!
+        </p>
+
+        <div class="humor-dialog-box">
+          <span class="humor-quote">“ഒരു കാരണവശാലും ഒഴിവാകാൻ പറ്റില്ല കേട്ടോ...!”</span>
+        </div>
+
+        <button id="lock-reconsider-btn" class="modal-btn btn-force-agree">
+          <span class="agree-icon">🙌</span>
+          <span>ശരി, ഞാൻ വന്നിരിക്കും! (Change to Yes)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
